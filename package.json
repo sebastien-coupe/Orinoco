@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "api": "node api/server",
-    "build:css": "postcss ./tailwind.css -o ./css/main.css",
-    "purge:css": "NODE_ENV=production postcss ./tailwind.css -o ./css/main.css"
+    "build:css": "postcss ./src/css/tailwind.css -o ./dist/css/main.css",
+    "purge:css": "NODE_ENV=production postcss ./src/css/tailwind.css -o ./dist/css/main.css",
+    "watch:js": "webpack"
   },
   "author": "",
   "license": "ISC",
