@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contenu de votre panier - Orinoco</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <div class="min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 py-4">
+      <div class="container max-w-screen-lg px-4 mx-auto">
+        <div class="flex justify-between items-center">
+          <a href="/" class="inline-block">
+            <img class="w-24 sm:w-32" src="assets/orinoco.webp" alt="Orinoco logo" width="163" height="40" />
+          </a>
+          <a href="#" class="text-white font-semibold hover:text-blue-200">
+            Mon panier
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="py-16 text-gray-700">
+      <div class="container max-w-screen-lg px-4 mx-auto">
+        <h1 class="text-xl sm:text-2xl font-semibold text-center uppercase">
+          Contenu de votre panier
+        </h1>
+        <div class="pt-16">
+          <div id="order">
+            <!-- Items injected here with javascript -->
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-auto py-4 bg-gray-200 text-sm">
+      <div class="container max-w-screen-lg sm:flex justify-between items-center px-4 mx-auto text-center">
+        <span class="font-semibold">Orinoco &copy; 2020</span>
+        <ul class="mt-4 sm:mt-0 sm:flex">
+          <li class="py-2 sm:py-0 "><a class="hover:underline" href="#">Livraison</a></li>
+          <li class="py-2 sm:py-0 sm:ml-4"><a class="hover:underline" href="#">Mentions Légales</a></li>
+          <li class="py-2 sm:py-0 sm:ml-4"><a class="hover:underline" href="#">Conditions Générales</a></li>
+        </ul>
+      </div>
+    </footer>
+  </div>
+</body>
+
+</html>
