@@ -20,7 +20,8 @@ if (!itemId) {
 } else {
   api.fetch(itemId)
     .then(item => {
-      console.log(item);
+      itemMountPoint.innerHTML = "";
+
       const pageTitle = `Peluche "${item.name}"`
 
       document.title = `${pageTitle} | Orinoco`;
