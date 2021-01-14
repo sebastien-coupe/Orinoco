@@ -4,10 +4,17 @@ export default class {
     this.api = api;
   }
 
-  async fetch(id) {
+  async fetchData(id = null) {
     try {
+      let response;
+
       // Send request to API then wait for the response
-      const response = await fetch(this.api + id);
+      if (id) {
+        response = await fetch(this.api + id);
+      } else {
+        response = await fetch(this.api);
+      }
+
       // Convert response to json
       const data = await response.json();
 
@@ -18,15 +25,12 @@ export default class {
     }
   }
 
-  async fetchAll() {
-    try {
-      const response = await fetch(this.api);
-      const data = await response.json();
+  async fetch(id) {
+    return await this.fetchData(id);
+  }
 
-      return data;
-    } catch (error) {
-      console.error('La connection avec le serveur n\'a pu être établie.\n' + error);
-    }
+  async fetchAll() {
+    return await this.fetchData();
   }
 
 

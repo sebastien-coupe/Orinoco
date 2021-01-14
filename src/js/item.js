@@ -1,5 +1,5 @@
-import DataManager from './modules/DataManager.js';
-import { CardDetails } from './components/Card.js';
+import DataManager from './modules/DataManager';
+import { CardDetails } from './components/Card';
 import { extractIdFromUrl } from './utils.js';
 
 const api = new DataManager('http://localhost:3000/api/teddies/')
