@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.image-responsive {
+    position: relative;
+    height: 0;
+    padding-top: 75%;
+}

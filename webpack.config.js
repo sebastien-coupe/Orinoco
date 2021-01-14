@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   entry: {
-    main: './src/js/main.js',
     home: './src/js/home.js',
     item: './src/js/item.js',
     order: './src/js/order.js'
@@ -20,6 +19,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
+            plugins: ["@babel/plugin-transform-runtime"],
             presets: ['@babel/preset-env']
           }
         }
