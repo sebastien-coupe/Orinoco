@@ -29,6 +29,6 @@ if (!itemId) {
 
       const card = new CardDetails(item);
 
-      card.inject(itemMountPoint);
+      card.injectTo(itemMountPoint);
     });
 }

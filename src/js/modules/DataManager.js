@@ -26,10 +26,12 @@ export default class {
   }
 
   async fetch(id) {
+    // Call fetchData with parameter => return 1 item
     return await this.fetchData(id);
   }
 
   async fetchAll() {
+    // Call fetchData without parameter => return all items
     return await this.fetchData();
   }
 

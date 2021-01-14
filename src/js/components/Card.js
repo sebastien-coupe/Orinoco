@@ -8,7 +8,7 @@ class Card {
     this.content = obj
   }
 
-  inject(mountPoint) {
+  injectTo(mountPoint) {
     // Create markup then inject it into selected element (mountPoint) in the DOM
     this.toHTML();
     mountPoint.appendChild(this.template)
@@ -20,6 +20,7 @@ class Card {
 export class CardPreview extends Card {
 
   constructor(obj) {
+    // Call parent class constructor
     super(obj);
   }
 

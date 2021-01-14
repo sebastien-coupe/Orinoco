@@ -15,7 +15,7 @@ api.fetchAll()
       const card = new CardPreview(item);
 
       // Inject it into the DOM
-      card.inject(home)
+      card.injectTo(home)
     })
   });
 
