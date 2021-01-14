@@ -7,3 +7,12 @@
     height: 0;
     padding-top: 75%;
 }
+
+#selector::after {
+    content: "\FE40";
+    position: absolute;
+    right: 0.6rem;
+    top: 50%;
+    transform: translateY(-30%);
+    pointer-events: none;
+}
