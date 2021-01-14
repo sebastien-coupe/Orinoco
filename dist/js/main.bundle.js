@@ -7,9 +7,9 @@
  * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
  */
 /******/ (() => { // webpackBootstrap
-/*!*************************!*\
-  !*** ./src/js/index.js ***!
-  \*************************/
-eval("console.log('test');\n\n//# sourceURL=webpack://orinoco/./src/js/index.js?");
+/*!************************!*\
+  !*** ./src/js/main.js ***!
+  \************************/
+eval("console.log('test');\n\n//# sourceURL=webpack://orinoco/./src/js/main.js?");
 /******/ })()
 ;
