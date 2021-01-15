@@ -22,6 +22,10 @@ class Card {
 
     if (this instanceof CardDetails) {
       qtyBtn.addEventListener('change', (e) => {
+        // Reset quantity to 1 if null or negative
+        if (e.target.value < 1) {
+          e.target.value = 1;
+        };
         buyBtn.dataset.quantity = e.target.value;
       })
     }
