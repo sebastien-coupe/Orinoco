@@ -1,7 +1,7 @@
 import DataManager from './modules/DataManager';
 import CartManager from './modules/CartManager';
 import { CardPreview } from './components/Card';
-import { extractIdFromUrl, animateCartBtn } from './utils.js';
+import { animateCartBtn } from './utils.js';
 
 // Create connection with API
 const api = new DataManager('http://localhost:3000/api/teddies');
