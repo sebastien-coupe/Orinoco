@@ -66,4 +66,13 @@ export default class {
     return this.items.length;
   }
 
+  getData() {
+    const cartData = {
+      items: this.items,
+      total: this.total
+    };
+
+    return cartData;
+  }
+
 }
