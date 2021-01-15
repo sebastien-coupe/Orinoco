@@ -30,5 +30,9 @@ if (!itemId) {
       const card = new CardDetails(item);
 
       card.injectTo(itemMountPoint);
+
+      card.onAdd((e) => {
+        console.log(e.target)
+      })
     });
 }

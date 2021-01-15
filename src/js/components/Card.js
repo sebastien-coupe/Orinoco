@@ -14,6 +14,19 @@ class Card {
     mountPoint.appendChild(this.template)
   }
 
+  onAdd(cb) {
+    const buyBtn = this.template.querySelector('.js-buy');
+    const qtyBtn = this.template.querySelector('.js-quantity');
+
+    buyBtn.addEventListener('click', cb);
+
+    if (this instanceof CardDetails) {
+      qtyBtn.addEventListener('change', (e) => {
+        buyBtn.dataset.quantity = e.target.value;
+      })
+    }
+  }
+
 }
 
 
@@ -42,7 +55,13 @@ export class CardPreview extends Card {
           ${formatPrice(this.content.price)}
       </span>
         <a href="item.html?id=${this.content._id}" class="inline-block ml-2 px-4 py-2 rounded-md bg-gray-200 hover:bg-gray-300">Détails</a>
-        <button class="inline-block bg-blue-200 text-blue-900 ml-2 px-4 py-2 rounded-md hover:bg-blue-300">
+        <button 
+          class="js-buy inline-block bg-blue-200 text-blue-900 ml-2 px-4 py-2 rounded-md hover:bg-blue-300"
+          data-id="${this.content._id}"
+          data-name="${this.content.name}"
+          data-price="${this.content.price}"
+          data-quantity="1"
+        >
           Ajouter
         </button>
       </div>
@@ -89,13 +108,19 @@ export class CardDetails extends Card {
         </div>
         <div class="flex justify-between items-center mt-6">
           <label for="quantity" class="text-sm font-semibold">Quantité:</label>
-          <input type="number" min="1" value="1" id="quantity" class="inline-block w-1/4 p-2 bg-transparent border-b text-center"/>
+          <input type="number" min="1" value="1" id="quantity" class="js-quantity inline-block w-1/4 p-2 bg-transparent border-b text-center"/>
         </div>
         <div class="flex gap-4 justify-between mt-16 lg:mt-auto">
           <span class="inline-flex flex-1 items-center justify-center bg-white rounded-md text-xl text-2xl font-semibold">
             ${formatPrice(this.content.price)}
           </span>
-          <button class="inline-block bg-blue-200 text-blue-900 px-4 py-2 rounded-md hover:bg-blue-300">
+          <button 
+            class="js-buy inline-block bg-blue-200 text-blue-900 px-4 py-2 rounded-md hover:bg-blue-300"
+            data-id="${this.content._id}"
+            data-name="${this.content.name}"
+            data-price="${this.content.price}"
+            data-quantity="1"
+          >
             Ajouter
           </button>
         </div>

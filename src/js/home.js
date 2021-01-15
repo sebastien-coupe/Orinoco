@@ -15,7 +15,12 @@ api.fetchAll()
       const card = new CardPreview(item);
 
       // Inject it into the DOM
-      card.injectTo(home)
+      card.injectTo(home);
+
+      // Listen click event on add button
+      card.onAdd((e) => {
+        console.log(e.target)
+      })
     })
   });
 
