@@ -35,7 +35,7 @@ export default class {
       <tbody>
       ${this.data.items.map(item => {
       return `
-          <tr>
+          <tr class="border-b">
             <td class="py-2">
               <a href="item.html?id=${item.id}">
                 <span class="inline-block w-full uppercase font-semibold">Peluche "${item.name}"</span>
@@ -55,23 +55,23 @@ export default class {
         `}).join('')
       }
       </tbody>
-  <tfoot>
-    <tr class="border-t font-bold">
-      <td>
-        <button id="clear-cart" class="border border-red-400 text-red-500 py-2 px-4 rounded-md hover:bg-red-400 hover:text-white">
-          Vider mon panier
-            </button>
-      </td>
-      <td></td>
-      <td class="py-4 text-center uppercase">Total T.T.C:</td>
-      <td class="py-4 text-center">
-        <div class="text-2xl">
-          ${formatPrice(this.data.total)}
-        </div>
-      </td>
-    </tr>
-  </tfoot>
-`;
+      <tfoot>
+        <tr class="font-bold">
+          <td>
+            <button id="clear-cart" class="border border-red-400 text-red-500 py-2 px-4 rounded-md hover:bg-red-400 hover:text-white">
+              Vider mon panier
+                </button>
+          </td>
+          <td></td>
+          <td class="py-4 text-center uppercase">Total T.T.C:</td>
+          <td class="py-4 text-center">
+            <div class="text-2xl">
+              ${formatPrice(this.data.total)}
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    `;
 
     this.template = table;
   }
