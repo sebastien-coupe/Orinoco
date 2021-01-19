@@ -13,7 +13,7 @@ if (cart.getCount() > 0) {
 
   summary.onCartClear(() => {
     cart.clear();
-    window.location.reload();
+    cartMountPoint.innerHTML = defaultMarkup.emptyCart;
   })
 
 } else {
