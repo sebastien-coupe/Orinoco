@@ -75,4 +75,8 @@ export default class {
     return cartData;
   }
 
+  getItems() {
+    return this.items.map(item => item.id)
+  }
+
 }

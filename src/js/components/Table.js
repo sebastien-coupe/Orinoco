@@ -13,6 +13,12 @@ export default class {
     cartClearBtn.addEventListener('click', cb);
   }
 
+  onCartConfirmation(cb) {
+    const confirmCartBtn = this.template.querySelector('#confirm-cart');
+
+    confirmCartBtn.addEventListener('click', cb);
+  }
+
   injectTo(mountPoint) {
     // Create markup then inject it into selected element (mountPoint) in the DOM
     this.toHTML();
@@ -20,6 +26,7 @@ export default class {
   }
 
   toHTML() {
+    const container = document.createElement("div");
     const table = document.createElement('table');
     table.classList.add('w-full');
 
@@ -73,7 +80,19 @@ export default class {
       </tfoot>
     `;
 
-    this.template = table;
+    const cta = document.createElement('div');
+    cta.classList.add('mt-16', 'text-right');
+
+    cta.innerHTML = `
+      <button id="confirm-cart" class="inline-block px-4 py-2 border text-blue-500 border-blue-500 rounded-md font-medium hover:bg-blue-500 hover:text-white">
+        Valider le panier
+      </button>
+    `
+
+    container.appendChild(table)
+    container.appendChild(cta)
+
+    this.template = container;
   }
 
 }

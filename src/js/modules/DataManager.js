@@ -35,5 +35,19 @@ export default class {
     return await this.fetchData();
   }
 
+  async send(order) {
+    const request = await fetch(this.api, {
+      method: "POST",
+      body: JSON.stringify(order),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    });
+
+    const response = request.json();
+
+    return response;
+  }
+
 
 }
