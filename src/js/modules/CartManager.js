@@ -30,9 +30,6 @@ export default class {
       this.items.push(newItem);
     }
 
-    // Recalculate cart total
-    this.setTotal();
-
     // Save the cart in localStorage
     this.save();
   }
@@ -42,7 +39,6 @@ export default class {
       return item.id !== id;
     });
 
-    this.setTotal();
     this.save();
   }
 
@@ -53,7 +49,6 @@ export default class {
       }
     });
 
-    this.setTotal();
     this.save();
   }
 
@@ -64,6 +59,8 @@ export default class {
   }
 
   save() {
+    this.setTotal();
+
     const cartInformations = {
       items: this.items,
       total: this.total
