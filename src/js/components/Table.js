@@ -1,3 +1,4 @@
+import CartManager from '../modules/CartManager';
 import { formatPrice } from '../utils.js';
 
 export default class {
@@ -25,6 +26,55 @@ export default class {
     mountPoint.appendChild(this.template);
   }
 
+  updatePrice() {
+    const quantity = this.template.getElementsByClassName('quantity');
+    console.log(quantity)
+
+    for (let qty of quantity) {
+      qty.addEventListener('change', (event) => {
+        const itemId = event.target.dataset.id;
+        const unitPrice = parseInt(document.getElementById(`price-${itemId}`).dataset.price);
+        const total = document.getElementById(`total-${itemId}`)
+        const store = new CartManager();
+
+        total.textContent = formatPrice(unitPrice * event.target.value);
+        total.dataset.total = parseInt(unitPrice * event.target.value)
+        this.setTotal();
+
+        store.updateItem(itemId, event.target.value);
+      });
+    }
+
+  }
+
+  remove() {
+    const removeBtn = this.template.getElementsByClassName('remove');
+
+    console.log(removeBtn)
+
+    for (let remove of removeBtn) {
+      remove.addEventListener('click', (event) => {
+        const store = new CartManager();
+        store.removeItem(remove.dataset.id);
+
+        window.location.reload();
+      })
+    }
+
+  }
+
+  setTotal() {
+    const totalPerItem = document.getElementsByClassName('total-per-item');
+    const cartTotal = document.getElementById('cart-total');
+    let total = 0;
+
+    for (let item of totalPerItem) {
+      total += parseInt(item.dataset.total)
+    }
+
+    cartTotal.textContent = formatPrice(total)
+  }
+
   toHTML() {
     const container = document.createElement("div");
     const table = document.createElement('table');
@@ -37,6 +87,7 @@ export default class {
           <th>Prix</th>
           <th>Quantité</th>
           <th>Sous-total</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -49,15 +100,18 @@ export default class {
                 <span class="inline-block text-sm">Ref: ${item.id}</span>
               </a>
             </td>
-            <td class="text-center py-2">
+            <td id="price-${item.id}" data-price="${item.price}" class="text-center py-2">
               ${formatPrice(item.price)}
             </td>
             <td class="text-center py-2">
-              <input id="count-change" type="number" min="1" data-id="${item.id}" value="${item.quantity}"
+              <input class="quantity" type="number" min="1" data-id="${item.id}" value="${item.quantity}"
                 class="inline-block w-16 py-2 px-1 rounded-md border text-center"
               />
             </td>
-            <td class="text-center py-2">${formatPrice(item.price * item.quantity)}</td>
+            <td id="total-${item.id}" data-total="${item.price * item.quantity}" class="total-per-item text-center py-2">${formatPrice(item.price * item.quantity)}</td>
+            <td class="px-4">
+              <button title="Supprimer l'article du panier" data-id="${item.id}" class="remove text-lg text-red-400">&#10006;</button>
+            </td>
           </tr>
         `}).join('')
       }
@@ -72,7 +126,7 @@ export default class {
           <td></td>
           <td class="py-4 text-center uppercase">Total T.T.C:</td>
           <td class="py-4 text-center">
-            <div class="text-2xl">
+            <div id="cart-total" class="text-2xl">
               ${formatPrice(this.data.total)}
             </div>
           </td>
@@ -93,6 +147,9 @@ export default class {
     container.appendChild(cta)
 
     this.template = container;
+
+    this.updatePrice();
+    this.remove();
   }
 
 }

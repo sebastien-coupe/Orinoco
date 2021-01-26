@@ -37,6 +37,26 @@ export default class {
     this.save();
   }
 
+  removeItem(id) {
+    this.items = this.items.filter(item => {
+      return item.id !== id;
+    });
+
+    this.setTotal();
+    this.save();
+  }
+
+  updateItem(id, quantity) {
+    this.items.map(item => {
+      if (item.id === id) {
+        item.quantity = quantity;
+      }
+    });
+
+    this.setTotal();
+    this.save();
+  }
+
   setTotal() {
     this.total = this.items.reduce((total, current) => {
       return total + (current.quantity * current.price);
