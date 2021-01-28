@@ -54,7 +54,7 @@ export default class ContactForm {
       <form id="contact" class="mt-8">
         <div class="px-4 py-2 bg-yellow-200 text-sm text-yellow-900 rounded-md">
           <span class="mr-2">&#128712;</span>Les champs précédés d'un
-          <strong>*</strong> sont requis.
+          <strong>*</strong> sont obligatoires.
         </div>
         <div class="flex flex-col gap-4 mt-8 sm:flex-row sm:gap-8">
           <div class="flex-1">
@@ -162,7 +162,4 @@ export default class ContactForm {
     this.template = form;
   }
 
-  getData() {
-    return this.data
-  }
 }
