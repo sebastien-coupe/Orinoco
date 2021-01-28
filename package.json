@@ -5,8 +5,9 @@
   "main": "server.js",
   "scripts": {
     "api": "node api/server",
+    "build": "npm run build:css && npm run build:js",
     "build:css": "postcss ./src/css/tailwind.css -o ./dist/css/main.css",
-    "watch:js": "webpack",
+    "build:js": "webpack",
     "clean:js": "rm -rf ./dist/js/*"
   },
   "author": "",

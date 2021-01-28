@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     home: './src/js/home.js',
     item: './src/js/item.js',
@@ -26,6 +26,5 @@ module.exports = {
         }
       }
     ]
-  },
-  watch: true
+  }
 };
