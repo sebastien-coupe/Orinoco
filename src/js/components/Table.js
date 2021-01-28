@@ -41,7 +41,7 @@ export default class {
         total.dataset.total = parseInt(unitPrice * event.target.value)
         this.setTotal();
 
-        store.updateItem(itemId, event.target.value);
+        store.updateItem(itemId, parseInt(event.target.value));
       });
     }
 
@@ -104,8 +104,8 @@ export default class {
               ${formatPrice(item.price)}
             </td>
             <td class="text-center py-2">
-              <input class="quantity" type="number" min="1" data-id="${item.id}" value="${item.quantity}"
-                class="inline-block w-16 py-2 px-1 rounded-md border text-center"
+              <input type="number" min="1" data-id="${item.id}" value="${item.quantity}"
+              class="quantity inline-block w-16 py-2 px-1 rounded-md border text-center"
               />
             </td>
             <td id="total-${item.id}" data-total="${item.price * item.quantity}" class="total-per-item text-center py-2">${formatPrice(item.price * item.quantity)}</td>
