@@ -21,7 +21,7 @@ export default {
 
   orderSuccess(id) {
     return `
-      <div class="max-w-lg mx-auto mt-12 p-8 text-green-800 bg-green-100 rounded-md border border-green-200">
+      <div class="max-w-lg mx-auto p-8 text-green-800 bg-green-100 rounded-md border border-green-200">
         <h2 class="text-xl text-center">Votre commande a été validée</h2>
         <p class="mt-6">Orinoco vous remercie pour votre achat.</p>
         <p class="mt-4">

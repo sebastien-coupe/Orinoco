@@ -27,8 +27,9 @@ if (cart.getCount() > 0) {
       const api = new DataManager('http://localhost:3000/api/teddies/order/');
 
       api.send(order)
-        .then(response => {
-          cartMountPoint.innerHTML = defaultMarkup.orderSuccess(response.orderId)
+        .then(data => {
+          cartMountPoint.innerHTML = defaultMarkup.orderSuccess(data.orderId)
+          cart.clear();
         });
     })
 
