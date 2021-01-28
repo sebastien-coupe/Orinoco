@@ -11,31 +11,31 @@ const itemId = extractIdFromUrl();
 
 const itemMountPoint = document.querySelector('#item');
 
-if (!itemId) {
-  itemMountPoint.innerHTML = defaultMarkup.notFoundItem;
-} else {
-  api.fetch(itemId)
-    .then(item => {
-      itemMountPoint.innerHTML = "";
+api.fetch(itemId)
+  .then(item => {
+    itemMountPoint.innerHTML = "";
 
-      const pageTitle = `Peluche "${item.name}"`
+    const pageTitle = `Peluche "${item.name}"`
 
-      document.title = `${pageTitle} | Orinoco`;
-      document.querySelector('h1').textContent = pageTitle;
+    document.title = `${pageTitle} | Orinoco`;
+    document.querySelector('h1').textContent = pageTitle;
 
-      const card = new CardDetails(item);
+    const card = new CardDetails(item);
 
-      card.injectTo(itemMountPoint);
+    card.injectTo(itemMountPoint);
 
-      card.onAdd((event) => {
-        const item = {
-          id: event.target.dataset.id,
-          name: event.target.dataset.name,
-          quantity: parseInt(event.target.dataset.quantity),
-          price: parseInt(event.target.dataset.price)
-        }
-        cart.addItem(item);
-        animateCartBtn();
-      });
-    })
-}
+    card.onAdd((event) => {
+      const item = {
+        id: event.target.dataset.id,
+        name: event.target.dataset.name,
+        quantity: parseInt(event.target.dataset.quantity),
+        price: parseInt(event.target.dataset.price)
+      }
+      cart.addItem(item);
+      animateCartBtn();
+    });
+  })
+  .catch((error) => {
+    document.querySelector('h1').textContent = "Article introuvable";
+    itemMountPoint.innerHTML = defaultMarkup.notFoundItem;
+  })
