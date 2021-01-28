@@ -36,6 +36,7 @@ export default class {
   }
 
   async send(order) {
+    // Send data to the api via POST request
     const request = await fetch(this.api, {
       method: "POST",
       body: JSON.stringify(order),

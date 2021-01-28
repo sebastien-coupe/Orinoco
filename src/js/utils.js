@@ -21,8 +21,10 @@ export function extractIdFromUrl() {
 export function animateCartBtn() {
   const cartBtn = document.querySelector('#cart-btn');
 
+  // Add the animation
   cartBtn.classList.add('animate');
 
+  // Remove the animation when completed
   cartBtn.addEventListener('animationend', (event) => {
     event.target.classList.remove('animate')
   })

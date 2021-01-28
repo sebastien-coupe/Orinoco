@@ -8,11 +8,13 @@ export default class {
     this.data = data;
   }
 
+  // Process click on "clear-cart" button
   onCartClear(cb) {
     const cartClearBtn = this.template.querySelector('#clear-cart');
 
     cartClearBtn.addEventListener('click', cb);
   }
+
 
   onCartConfirmation(cb) {
     const confirmCartBtn = this.template.querySelector('#confirm-cart');
@@ -26,6 +28,7 @@ export default class {
     mountPoint.appendChild(this.template);
   }
 
+  // Re-calculate cart prices when user changes items quantities 
   updatePrice() {
     const quantity = this.template.getElementsByClassName('quantity');
 
@@ -36,10 +39,12 @@ export default class {
         const total = document.getElementById(`total-${itemId}`)
         const store = new CartManager();
 
+        // Update displayed prices
         total.textContent = formatPrice(unitPrice * event.target.value);
         total.dataset.total = parseInt(unitPrice * event.target.value)
         this.setTotal();
 
+        // Save changes on cart
         store.updateItem(itemId, parseInt(event.target.value));
       });
     }
@@ -52,8 +57,11 @@ export default class {
     for (let remove of removeBtn) {
       remove.addEventListener('click', (event) => {
         const store = new CartManager();
+
+        // Remove item from cart
         store.removeItem(remove.dataset.id);
 
+        // Reload the page to display updated cart
         window.location.reload();
       })
     }
@@ -89,6 +97,7 @@ export default class {
       </thead>
       <tbody>
       ${this.data.items.map(item => {
+      // Create a table row for each item in cart
       return `
           <tr class="border-b">
             <td class="py-2">
@@ -145,6 +154,7 @@ export default class {
 
     this.template = container;
 
+    // Attach events listeners
     this.updatePrice();
     this.remove();
   }

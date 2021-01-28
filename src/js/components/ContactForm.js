@@ -14,6 +14,7 @@ export default class ContactForm {
   validate() {
     this.errors = [];
 
+    // Get information from form, assign null if empty
     const lastName = document.querySelector('#lastname').value || null
     const firstName = document.querySelector('#firstname').value || null
     const address = document.querySelector('#address').value || null
@@ -23,9 +24,11 @@ export default class ContactForm {
     const email = document.querySelector('#email').value || null
     const emailConfirmation = document.querySelector('#email-confirm').value || null;
 
+    // Check email
     if (email !== emailConfirmation) {
       this.errors.push('Les adresses email ne correspondent pas')
     }
+
 
     if (lastName, firstName, address, addressComplement, zip, city, email, emailConfirmation) {
       this.data = {
@@ -40,11 +43,13 @@ export default class ContactForm {
       }
     }
 
+    // Display error message to the user if form validation fail then cancel validation
     if (this.errors.length) {
       this.showErrors();
       return false;
     }
 
+    // Confirm validation
     return true;
   }
 
@@ -61,6 +66,7 @@ export default class ContactForm {
           city: this.data.city,
           email: this.data.email
         }
+        // Process event from view
         cb(data);
       }
     });

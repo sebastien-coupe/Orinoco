@@ -7,19 +7,23 @@ import { extractIdFromUrl, animateCartBtn } from './utils.js';
 const api = new DataManager('http://localhost:3000/api/teddies/');
 const cart = new CartManager();
 
+// Get the item id from url
 const itemId = extractIdFromUrl();
 
 const itemMountPoint = document.querySelector('#item');
 
+// Call api with the id to fetch one item
 api.fetch(itemId)
   .then(item => {
     itemMountPoint.innerHTML = "";
 
     const pageTitle = `Peluche "${item.name}"`
 
+    // Set the page title to the current item name
     document.title = `${pageTitle} | Orinoco`;
     document.querySelector('h1').textContent = pageTitle;
 
+    // Create a CardDetails to display item informations and options
     const card = new CardDetails(item);
 
     card.injectTo(itemMountPoint);
@@ -36,6 +40,7 @@ api.fetch(itemId)
     });
   })
   .catch((error) => {
+    // Display an alternative message if item id is not in database
     document.querySelector('h1').textContent = "Article introuvable";
     itemMountPoint.innerHTML = defaultMarkup.notFoundItem;
   })

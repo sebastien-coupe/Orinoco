@@ -28,7 +28,10 @@ api.fetchAll()
           quantity: parseInt(event.target.dataset.quantity),
           price: parseInt(event.target.dataset.price)
         }
+        // Add current item to the cart
         cart.addItem(item);
+
+        // Animate cart button to indicate that the item has been successfully added to the cart
         animateCartBtn()
       })
     })
