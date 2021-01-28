@@ -2,6 +2,7 @@ export default class ContactForm {
   constructor() {
     this.template = null;
     this.data = {};
+    this.errors = [];
   }
 
   injectTo(mountPoint) {
@@ -11,25 +12,39 @@ export default class ContactForm {
   }
 
   validate() {
+    this.errors = [];
+
     const lastName = document.querySelector('#lastname').value || null
     const firstName = document.querySelector('#firstname').value || null
     const address = document.querySelector('#address').value || null
+    const addressComplement = document.querySelector('#address-complement').value || null
+    const zip = document.querySelector('#zip').value || null
     const city = document.querySelector('#city').value || null
     const email = document.querySelector('#email').value || null
+    const emailConfirmation = document.querySelector('#email-confirm').value || null;
 
-    if (lastName, firstName, address, city, email) {
+    if (email !== emailConfirmation) {
+      this.errors.push('Les adresses email ne correspondent pas')
+    }
+
+    if (lastName, firstName, address, addressComplement, zip, city, email, emailConfirmation) {
       this.data = {
         lastName,
         firstName,
         address,
+        addressComplement,
+        zip,
         city,
-        email
+        email,
+        emailConfirmation
       }
-
-      return true;
     }
 
-    return false;
+    if (this.errors.length) {
+      return false;
+    }
+
+    return true;
   }
 
   onSubmit(cb) {
@@ -38,7 +53,14 @@ export default class ContactForm {
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       if (this.validate()) {
-        cb(this.data);
+        const data = {
+          lastName: this.data.lastName,
+          firstName: this.data.firstName,
+          address: this.data.address,
+          city: this.data.city,
+          email: this.data.email
+        }
+        cb(data);
       } else {
         console.error('Une erreur est survenue!')
       }
@@ -63,6 +85,7 @@ export default class ContactForm {
               type="text"
               name="lastname"
               id="lastname"
+              value="${this.data.lastName ?? ''}"
               required
               class="w-full mt-1 px-4 py-2 border rounded-md"
             />
@@ -75,6 +98,7 @@ export default class ContactForm {
               type="text"
               name="firstname"
               id="firstname"
+              value="${this.data.firstName ?? ''}"
               required
               class="w-full mt-1 px-4 py-2 border rounded-md"
             />
@@ -86,6 +110,7 @@ export default class ContactForm {
             type="text"
             name="address"
             id="address"
+            value="${this.data.address ?? ''}"
             required
             class="w-full mt-1 px-4 py-2 border rounded-md"
           />
@@ -98,6 +123,7 @@ export default class ContactForm {
             type="text"
             name="address-complement"
             id="address-complement"
+            value="${this.data.addressComplement ?? ''}"
             class="w-full mt-1 px-4 py-2 border rounded-md"
           />
         </div>
@@ -110,6 +136,7 @@ export default class ContactForm {
               type="text"
               name="zip"
               id="zip"
+              value="${this.data.zip ?? ''}"
               class="w-full mt-1 px-4 py-2 border rounded-md"
             />
           </div>
@@ -119,6 +146,7 @@ export default class ContactForm {
               type="text"
               name="city"
               id="city"
+              value="${this.data.city ?? ''}"
               required
               class="w-full mt-1 px-4 py-2 border rounded-md"
             />
@@ -132,6 +160,7 @@ export default class ContactForm {
             type="email"
             name="email"
             id="email"
+            value="${this.data.email ?? ''}"
             required
             class="w-full mt-1 px-4 py-2 border rounded-md"
           />
@@ -144,6 +173,7 @@ export default class ContactForm {
             type="email"
             name="email-confirm"
             id="email-confirm"
+            value="${this.data.emailConfirmation ?? ''}"
             required
             class="w-full mt-1 px-4 py-2 border rounded-md"
           />
