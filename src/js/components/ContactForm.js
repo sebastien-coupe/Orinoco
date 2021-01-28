@@ -41,6 +41,7 @@ export default class ContactForm {
     }
 
     if (this.errors.length) {
+      this.showErrors();
       return false;
     }
 
@@ -61,8 +62,6 @@ export default class ContactForm {
           email: this.data.email
         }
         cb(data);
-      } else {
-        console.error('Une erreur est survenue!')
       }
     });
   }
@@ -78,6 +77,7 @@ export default class ContactForm {
           <span class="mr-2">&#128712;</span>Les champs précédés d'un
           <strong>*</strong> sont obligatoires.
         </div>
+        <div id="errors"></div>
         <div class="flex flex-col gap-4 mt-8 sm:flex-row sm:gap-8">
           <div class="flex-1">
             <label for="lastname" class="inline-block w-full text-sm">*Nom:</label>
@@ -190,6 +190,19 @@ export default class ContactForm {
     `;
 
     this.template = form;
+  }
+
+  showErrors() {
+    const errorList = document.createElement('ul');
+    errorList.classList.add('mt-4')
+
+    errorList.innerHTML = `
+      ${this.errors.map(error => {
+      return `<li class="px-4 py-2 bg-red-200 text-sm text-red-900 rounded-md"><span class="mr-2">&#9888;</span>${error}</li>`;
+    })}
+    `;
+
+    this.template.querySelector('#errors').appendChild(errorList);
   }
 
 }
