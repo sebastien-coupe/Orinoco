@@ -28,7 +28,6 @@ export default class {
 
   updatePrice() {
     const quantity = this.template.getElementsByClassName('quantity');
-    console.log(quantity)
 
     for (let qty of quantity) {
       qty.addEventListener('change', (event) => {
@@ -49,8 +48,6 @@ export default class {
 
   remove() {
     const removeBtn = this.template.getElementsByClassName('remove');
-
-    console.log(removeBtn)
 
     for (let remove of removeBtn) {
       remove.addEventListener('click', (event) => {
