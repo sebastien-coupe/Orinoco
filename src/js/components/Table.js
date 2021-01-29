@@ -89,9 +89,8 @@ export default class {
       <thead>
         <tr class="border-b text-lg">
           <th class="text-left pb-2">Désignation</th>
-          <th>Prix</th>
-          <th>Quantité</th>
-          <th>Sous-total</th>
+          <th class="px-4">Quantité</th>
+          <th class="whitespace-nowrap">Sous-total</th>
           <th></th>
         </tr>
       </thead>
@@ -100,14 +99,19 @@ export default class {
       // Create a table row for each item in cart
       return `
           <tr class="border-b">
-            <td class="py-2">
-              <a href="item.html?id=${item.id}">
-                <span class="inline-block w-full uppercase font-semibold">Peluche "${item.name}"</span>
-                <span class="inline-block text-sm">Ref: ${item.id}</span>
-              </a>
-            </td>
-            <td id="price-${item.id}" data-price="${item.price}" class="text-center py-2">
-              ${formatPrice(item.price)}
+            <td class="w-auto py-4">
+              <div class="sm:flex sm:justify-between sm:items-center">
+                <a href="item.html?id=${item.id}">
+                  <span class="inline-block w-full uppercase font-semibold">Peluche "${item.name}"</span>
+                  <span class="hidden sm:inline-block text-sm">Ref: ${item.id}</span>
+                  <span id="price-${item.id}" data-price="${item.price}" class="inline-block w-full mt-2">
+                    Prix unitaire: <span class="font-semibold">${formatPrice(item.price)}</span>
+                  </span>
+                </a>
+                <button title="Supprimer l'article du panier" data-id="${item.id}"
+                class="remove mt-4 sm:mt-0 px-2 border border-red-400 rounded text-sm text-red-400 hover:bg-red-400 hover:text-white"
+                >supprimer</button>
+              </div>
             </td>
             <td class="text-center py-2">
               <input type="number" min="1" data-id="${item.id}" value="${item.quantity}"
@@ -115,24 +119,20 @@ export default class {
               />
             </td>
             <td id="total-${item.id}" data-total="${item.price * item.quantity}" class="total-per-item text-center py-2">${formatPrice(item.price * item.quantity)}</td>
-            <td class="px-4">
-              <button title="Supprimer l'article du panier" data-id="${item.id}" class="remove text-lg text-red-400">&#10006;</button>
-            </td>
           </tr>
         `}).join('')
       }
       </tbody>
       <tfoot>
         <tr class="font-bold">
-          <td>
+          <td class="py-4">
             <button id="clear-cart" class="border border-red-400 text-red-500 py-2 px-4 rounded-md hover:bg-red-400 hover:text-white">
               Vider mon panier
                 </button>
           </td>
-          <td></td>
-          <td class="py-4 text-center uppercase">Total T.T.C:</td>
+          <td class="py-4 text-center uppercase">Total:</td>
           <td class="py-4 text-center">
-            <div id="cart-total" class="text-2xl">
+            <div id="cart-total" class="text-2xl whitespace-nowrap">
               ${formatPrice(this.data.total)}
             </div>
           </td>
