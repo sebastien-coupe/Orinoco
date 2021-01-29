@@ -8,7 +8,8 @@ export function formatPrice(price) {
 
 // Get id from url parameters
 export function extractIdFromUrl() {
-  const id = window.location.search.split("=")[1];
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
 
   if (!id) {
     return null;
