@@ -45,7 +45,7 @@ export default class {
   updateItem(id, quantity) {
     this.items.map(item => {
       if (item.id === id) {
-        item.quantity = quantity;
+        item.quantity = parseInt(quantity);
       }
     });
 

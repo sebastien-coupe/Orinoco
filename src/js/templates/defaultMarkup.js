@@ -26,7 +26,7 @@ export default {
         <p class="mt-6">Orinoco vous remercie pour votre achat.</p>
         <p class="mt-4">
           La commande ref: <strong>${id}</strong> est en cours de
-          traitement et sera expédié dans les meilleurs délais.
+          traitement et sera expédiée dans les meilleurs délais.
         </p>
         <p class="mt-6 text-right">A bientôt sur Orinoco.</p>
       </div>

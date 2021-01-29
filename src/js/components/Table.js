@@ -45,7 +45,7 @@ export default class {
         this.setTotal();
 
         // Save changes on cart
-        store.updateItem(itemId, parseInt(event.target.value));
+        store.updateItem(itemId, event.target.value);
       });
     }
 

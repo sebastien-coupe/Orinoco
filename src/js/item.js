@@ -32,8 +32,8 @@ api.fetch(itemId)
       const item = {
         id: event.target.dataset.id,
         name: event.target.dataset.name,
-        quantity: parseInt(event.target.dataset.quantity),
-        price: parseInt(event.target.dataset.price)
+        quantity: event.target.dataset.quantity,
+        price: event.target.dataset.price
       }
       cart.addItem(item);
       animateCartBtn();
