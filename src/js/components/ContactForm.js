@@ -96,6 +96,7 @@ export default class ContactForm {
               name="lastname"
               id="lastname"
               value="${this.data.lastName ?? ''}"
+              maxlength="255"
               required
               class="w-full mt-1 px-4 py-2 border rounded-md"
             />
@@ -109,6 +110,7 @@ export default class ContactForm {
               name="firstname"
               id="firstname"
               value="${this.data.firstName ?? ''}"
+              maxlength="255"
               required
               class="w-full mt-1 px-4 py-2 border rounded-md"
             />
@@ -121,6 +123,7 @@ export default class ContactForm {
             name="address"
             id="address"
             value="${this.data.address ?? ''}"
+            maxlength="255"
             required
             class="w-full mt-1 px-4 py-2 border rounded-md"
           />
@@ -134,6 +137,7 @@ export default class ContactForm {
             name="address-complement"
             id="address-complement"
             value="${this.data.addressComplement ?? ''}"
+            maxlength="255"
             class="w-full mt-1 px-4 py-2 border rounded-md"
           />
         </div>
@@ -147,6 +151,7 @@ export default class ContactForm {
               name="zip"
               id="zip"
               value="${this.data.zip ?? ''}"
+              maxlength="5"
               class="w-full mt-1 px-4 py-2 border rounded-md"
             />
           </div>
@@ -157,6 +162,7 @@ export default class ContactForm {
               name="city"
               id="city"
               value="${this.data.city ?? ''}"
+              maxlength="255"
               required
               class="w-full mt-1 px-4 py-2 border rounded-md"
             />
@@ -171,6 +177,7 @@ export default class ContactForm {
             name="email"
             id="email"
             value="${this.data.email ?? ''}"
+            maxlength="255"
             required
             class="w-full mt-1 px-4 py-2 border rounded-md"
           />
@@ -184,6 +191,7 @@ export default class ContactForm {
             name="email-confirm"
             id="email-confirm"
             value="${this.data.emailConfirmation ?? ''}"
+            maxlength="255"
             required
             class="w-full mt-1 px-4 py-2 border rounded-md"
           />
