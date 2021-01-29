@@ -29,6 +29,10 @@ export default class ContactForm {
       this.errors.push('Les adresses email ne correspondent pas')
     }
 
+    if (zip.length !== 5) {
+      this.errors.push('Le code postal n\'est pas valide')
+    }
+
 
     if (lastName, firstName, address, addressComplement, zip, city, email, emailConfirmation) {
       this.data = {
@@ -160,7 +164,7 @@ export default class ContactForm {
         </div>
         <div class="mt-4">
           <label for="email" class="inline-block w-full text-sm"
-            >Adresse mail:</label
+            >*Adresse mail:</label
           >
           <input
             type="email"
@@ -173,7 +177,7 @@ export default class ContactForm {
         </div>
         <div class="mt-4">
           <label for="email-confirm" class="inline-block w-full text-sm"
-            >Confirmer l'adresse mail:</label
+            >*Confirmer l'adresse mail:</label
           >
           <input
             type="email"
@@ -199,13 +203,16 @@ export default class ContactForm {
   }
 
   showErrors() {
-    const errorList = document.createElement('ul');
-    errorList.classList.add('mt-4')
+    const errorList = document.createElement('div');
+    errorList.classList.add('px-4', 'py-2', 'mt-4', 'bg-red-200', 'text-sm', 'text-red-900', 'rounded-md')
 
     errorList.innerHTML = `
+      <p><span class="mr-2">&#9888;</span>Veuillez corriger les erreurs suivantes:</p>
+      <ul class="list-disc ml-6">
       ${this.errors.map(error => {
-      return `<li class="px-4 py-2 bg-red-200 text-sm text-red-900 rounded-md"><span class="mr-2">&#9888;</span>${error}</li>`;
-    })}
+      return `<li class="mt-2">${error}</li>`;
+    }).join('')}
+      </ul>
     `;
 
     this.template.querySelector('#errors').appendChild(errorList);
