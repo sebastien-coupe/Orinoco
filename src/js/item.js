@@ -39,7 +39,7 @@ api.fetch(itemId)
       animateCartBtn();
     });
   })
-  .catch((error) => {
+  .catch(() => {
     // Display an alternative message if item id is not in database
     document.querySelector('h1').textContent = "Article introuvable";
     itemMountPoint.innerHTML = defaultMarkup.notFoundItem;

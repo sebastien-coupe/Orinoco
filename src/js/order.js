@@ -3,6 +3,7 @@ import CartManager from './modules/CartManager';
 import Table from './components/Table';
 import ContactForm from './components/ContactForm';
 import defaultMarkup from './templates/defaultMarkup';
+import { formatPrice } from './utils.js';
 
 const cart = new CartManager();
 
@@ -36,7 +37,7 @@ if (cart.getCount() > 0) {
       // Send data then display a message to confirm order validation
       api.send(order)
         .then(data => {
-          cartMountPoint.innerHTML = defaultMarkup.orderSuccess(data.orderId)
+          cartMountPoint.innerHTML = defaultMarkup.orderSuccess(data.orderId, formatPrice(cart.getTotal()))
           cart.clear();
         });
     })

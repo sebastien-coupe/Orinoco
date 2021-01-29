@@ -96,4 +96,8 @@ export default class {
     return this.items.map(item => item.id)
   }
 
+  getTotal() {
+    return this.total;
+  }
+
 }

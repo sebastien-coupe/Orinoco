@@ -203,6 +203,10 @@ export default class ContactForm {
   }
 
   showErrors() {
+    const placeHolder = this.template.querySelector('#errors');
+
+    placeHolder.innerHTML = "";
+
     const errorList = document.createElement('div');
     errorList.classList.add('px-4', 'py-2', 'mt-4', 'bg-red-200', 'text-sm', 'text-red-900', 'rounded-md')
 
@@ -215,7 +219,7 @@ export default class ContactForm {
       </ul>
     `;
 
-    this.template.querySelector('#errors').appendChild(errorList);
+    placeHolder.appendChild(errorList);
   }
 
 }
