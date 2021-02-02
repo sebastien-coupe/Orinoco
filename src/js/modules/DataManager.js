@@ -45,7 +45,7 @@ export default class {
       }
     });
 
-    const response = request.json();
+    const response = await request.json();
 
     return response;
   }
