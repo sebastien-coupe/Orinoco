@@ -24,6 +24,21 @@ export default class ContactForm {
     const email = document.querySelector('#email').value || null
     const emailConfirmation = document.querySelector('#email-confirm').value || null;
 
+    const regex = /[a-zA-Z]/g
+
+    // check name
+    if (!lastName.match(regex)) {
+      this.errors.push('Le nom doit être une chaîne de caractères.');
+    }
+
+    if (!firstName.match(regex)) {
+      this.errors.push('Le prénom doit être une chaîne de caractères.');
+    }
+
+    if (!city.match(regex)) {
+      this.errors.push('La ville doit être une chaîne de caractères.');
+    }
+
     // Check email
     if (email !== emailConfirmation) {
       this.errors.push('Les adresses email ne correspondent pas')
